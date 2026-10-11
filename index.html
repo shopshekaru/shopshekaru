@@ -1,107 +1,126 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover SHEKARU colouring books and creative experiences.">
-  <title>SHEKARU | Colouring Life</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f1">
+  <meta name="description" content="SHEKARU — colouring books for little dreamers. Discover playful pages and order through Instagram.">
+  <title>SHEKARU — Colouring Books for Little Dreamers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #fffaf3;
-      color: #393126;
-      line-height: 1.6;
-    }
-    header {
-      display: flex; justify-content: space-between;
-      align-items: center; padding: 22px 8%;
-      background: white;
-    }
-    .logo { font-size: 28px; font-weight: 800; letter-spacing: 3px; color: #e87543; }
-    nav a { margin-left: 22px; color: #393126; text-decoration: none; }
-    .hero {
-      padding: 85px 8%; text-align: center;
-      background: linear-gradient(135deg, #ffe7d5, #fff3c9);
-    }
-    .hero h1 { font-size: clamp(38px, 7vw, 68px); line-height: 1.1; }
-    .hero p { max-width: 550px; margin: 22px auto; font-size: 18px; }
-    .button {
-      display: inline-block; padding: 13px 25px; margin-top: 12px;
-      background: #e87543; color: white; border-radius: 30px;
-      text-decoration: none; font-weight: bold;
-    }
-    section { padding: 60px 8%; text-align: center; }
-    h2 { font-size: 32px; margin-bottom: 16px; }
-    .cards {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px; margin-top: 30px;
-    }
-    .card {
-      padding: 30px 22px; background: white; border-radius: 18px;
-      box-shadow: 0 5px 22px #392b1410;
-    }
-    .art { font-size: 55px; margin-bottom: 12px; }
-    footer { padding: 25px; text-align: center; background: #393126; color: white; }
-    @media (max-width: 600px) {
-      header { flex-direction: column; gap: 12px; }
-      nav a { margin: 0 8px; }
-      .hero { padding: 65px 6%; }
-    }
+    :root { --berry:#c91f50; --pink:#f15b82; --peach:#ffe0d5; --cream:#fff8f1; --ink:#39242b; --muted:#755f65; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family:'DM Sans',sans-serif; line-height:1.6; }
+    a { color:inherit; }
+    .wrap { width:min(1120px, calc(100% - 40px)); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(255,248,241,.94); backdrop-filter:blur(12px); border-bottom:1px solid #f1e4db; }
+    .nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { text-decoration:none; display:flex; align-items:center; gap:10px; color:var(--berry); font:700 25px 'Fredoka',sans-serif; letter-spacing:1px; }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border-radius:50% 44% 50% 42%; background:var(--pink); color:white; font:700 19px 'Fredoka',sans-serif; transform:rotate(-7deg); }
+    nav { display:flex; align-items:center; gap:27px; }
+    nav a { text-decoration:none; font-size:14px; font-weight:700; }
+    nav a:hover { color:var(--berry); }
+    .nav-cta,.button { display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:999px; padding:12px 20px; background:var(--berry); color:#fff; text-decoration:none; font-weight:700; box-shadow:0 8px 20px #c91f5026; transition:transform .18s, box-shadow .18s; }
+    .nav-cta:hover,.button:hover { transform:translateY(-2px); box-shadow:0 12px 24px #c91f5033; }
+    .hero { padding:64px 0 72px; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:54px; align-items:center; }
+    .eyebrow { color:var(--berry); font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; }
+    h1,h2,h3 { font-family:'Fredoka',sans-serif; line-height:1.12; }
+    h1 { max-width:590px; margin:16px 0; font-size:clamp(45px,6vw,76px); letter-spacing:-1.5px; }
+    h1 span { color:var(--berry); }
+    .hero-copy { max-width:500px; color:var(--muted); font-size:18px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
+    .button.secondary { color:var(--berry); background:#fff; box-shadow:inset 0 0 0 1px #f0c8cf; }
+    .hero-note { margin-top:17px; color:var(--muted); font-size:13px; }
+    .hero-art { position:relative; max-width:480px; justify-self:end; }
+    .hero-art:before { content:''; position:absolute; inset:8% 3% 0 12%; z-index:0; border-radius:44% 56% 53% 47% / 48% 45% 55% 52%; background:#ffd1dc; transform:rotate(5deg); }
+    .hero-art img { position:relative; z-index:1; display:block; width:100%; height:auto; border-radius:48% 52% 44% 56% / 44% 42% 58% 56%; box-shadow:0 22px 60px #9f314222; }
+    .bubble { position:absolute; z-index:2; display:grid; place-items:center; border:1px solid #fff; border-radius:50%; background:#fff9; color:var(--berry); box-shadow:0 8px 26px #bc356222; }
+    .bubble.one { width:60px;height:60px;right:-18px;top:10%;font-size:25px; }
+    .bubble.two { width:44px;height:44px;left:-20px;bottom:14%;font-size:20px; }
+    .section { padding:76px 0; }
+    .section-head { max-width:660px; margin:0 auto 35px; text-align:center; }
+    .section-head h2 { margin:9px 0 12px; font-size:clamp(33px,4.5vw,48px); }
+    .section-head p { margin:0; color:var(--muted); }
+    .shop-panel { display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:35px; padding:38px; border:1px solid #f4d7d4; border-radius:30px; background:linear-gradient(130deg,#fff 15%,#fff0ec); box-shadow:0 18px 50px #7330440c; }
+    .shop-art { min-height:250px; display:grid; place-items:center; border-radius:24px; background:radial-gradient(circle at 50% 40%,#fff 0 13%,transparent 14%),linear-gradient(145deg,#ffe3db,#ffd0db 55%,#f4a2b7); overflow:hidden; }
+    .book-shape { width:172px; height:218px; padding:20px 15px; display:flex; flex-direction:column; justify-content:space-between; text-align:center; color:var(--berry); background:#fff9f2; border:5px solid white; border-radius:13px 20px 20px 13px; box-shadow:10px 13px 0 #c91f5024,0 20px 34px #71314230; transform:rotate(-5deg); }
+    .book-shape .sparkle { font-size:47px; line-height:1; }
+    .book-shape strong { font:700 22px 'Fredoka',sans-serif; line-height:1.05; }
+    .book-shape small { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; }
+    .shop-copy h3 { margin:8px 0 12px; font-size:32px; }
+    .shop-copy p { color:var(--muted); }
+    .shop-copy .button { margin-top:8px; }
+    .availability { margin:12px 0 0; font-size:13px; }
+    .features { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:26px; }
+    .feature { padding:22px; border-radius:20px; background:white; border:1px solid #f5e8e1; }
+    .feature .icon { font-size:27px; }
+    .feature h3 { margin:8px 0 5px; font-size:20px; }
+    .feature p { margin:0; color:var(--muted); font-size:14px; }
+    .about { background:#ffede8; }
+    .about-inner { max-width:760px; margin:auto; text-align:center; }
+    .about h2 { margin:9px 0 14px; font-size:clamp(34px,4vw,46px); }
+    .about p { color:var(--muted); }
+    .insta-card { margin:50px auto 0; padding:28px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px; border:1px solid #f1d6d3; border-radius:24px; background:#fff; text-align:left; }
+    .insta-card h3 { margin:0 0 4px; font-size:23px; }
+    .insta-card p { margin:0; color:var(--muted); }
+    footer { padding:28px 0; color:#fff; background:#3e2930; }
+    .footer-inner { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px; font-size:13px; }
+    footer a { color:#ffd6df; font-weight:700; }
+    @media(max-width:760px) { .hero-grid,.shop-panel { grid-template-columns:1fr; } .hero { padding-top:42px; } .hero-art { width:min(100%,430px); justify-self:center; } .shop-panel { padding:22px; } .features { grid-template-columns:1fr; } nav { gap:14px; } nav a { font-size:13px; } .nav-cta { padding:10px 14px; font-size:13px; } }
+    @media(max-width:520px) { .wrap { width:min(100% - 28px,1120px); } .nav { min-height:68px; } .brand { font-size:21px; } nav { gap:10px; } nav a:nth-child(2) { display:none; } .nav-cta { padding:9px 12px; } .hero-copy { font-size:16px; } .hero-actions .button { width:100%; } .insta-card { padding:22px; } }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { transition:none!important; } }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">SHEKARU</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#collection">Collection</a>
-      <a href="#about">About</a>
-    </nav>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="SHEKARU home"><span class="brand-mark" aria-hidden="true">S</span> SHEKARU</a>
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#collection">Our books</a><a href="#about">Our story</a>
+      </nav>
+      <a class="nav-cta" href="https://www.instagram.com/shekaru.books/" target="_blank" rel="noopener noreferrer">Shop on Instagram <span aria-hidden="true">↗</span></a>
+    </div>
   </header>
-
   <main>
     <section class="hero" id="home">
-      <h1>Colour Your World.</h1>
-      <p>A little creativity, a little peace, and a whole lot of colour.
-      Welcome to SHEKARU — where imagination comes to life.</p>
-      <a class="button" href="#collection">Explore Our Collection</a>
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Colouring books for little dreamers</div>
+          <h1>Big smiles.<br><span>Bright little worlds.</span></h1>
+          <p class="hero-copy">Make room for stories, daydreams and a little colour. Welcome to SHEKARU, where every page is an invitation to imagine.</p>
+          <div class="hero-actions"><a class="button" href="#collection">Find your next favourite <span aria-hidden="true">↓</span></a><a class="button secondary" href="https://www.instagram.com/shekaru.books/" target="_blank" rel="noopener noreferrer">Follow @shekaru.books</a></div>
+          <p class="hero-note">Questions or ready to order? We’re happy to help on Instagram.</p>
+        </div>
+        <div class="hero-art"><img src="shekaru-logo.png" alt="SHEKARU logo: a cheerful girl and squirrel among bubbles, with the words Colouring Books for Little Dreamers"><span class="bubble one" aria-hidden="true">✦</span><span class="bubble two" aria-hidden="true">♡</span></div>
+      </div>
     </section>
 
-    <section id="collection">
-      <h2>Our Creative Collection</h2>
-      <p>Make time for yourself. Pick up your colours and let your imagination wander.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="art">🌸</div>
-          <h3>Colouring Life</h3>
-          <p>Explore our first colouring-book collection, created for joyful and relaxing moments.</p>
-        </div>
-        <div class="card">
-          <div class="art">🎨</div>
-          <h3>Your Creativity</h3>
-          <p>Turn simple outlines into something wonderfully yours.</p>
-        </div>
-        <div class="card">
-          <div class="art">🦋</div>
-          <h3>Moments of Calm</h3>
-          <p>Take a break, slow down, and enjoy the simple pleasure of colouring.</p>
+    <section class="section" id="collection">
+      <div class="wrap">
+        <div class="section-head"><div class="eyebrow">Made for curious minds</div><h2>A little colour goes a long way</h2><p>Find a cosy moment, pick your favourite colours and let your imagination take the lead.</p></div>
+        <article class="shop-panel">
+          <div class="shop-art" aria-label="Illustration of a SHEKARU colouring book"><div class="book-shape"><span class="sparkle" aria-hidden="true">✿</span><strong>Colour<br>your world</strong><small>SHEKARU · little dreamers</small></div></div>
+          <div class="shop-copy"><div class="eyebrow">The SHEKARU collection</div><h3>Ready for a colourful adventure?</h3><p>Ask us about the colouring books currently available, pricing and delivery. We’ll help you choose your next happy little project.</p><a class="button" href="https://www.instagram.com/shekaru.books/" target="_blank" rel="noopener noreferrer">Ask to buy on Instagram <span aria-hidden="true">↗</span></a><p class="availability">Message <strong>@shekaru.books</strong> for current availability and ordering.</p></div>
+        </article>
+        <div class="features">
+          <article class="feature"><div class="icon" aria-hidden="true">🖍️</div><h3>Your own little masterpiece</h3><p>Choose the colours, make the rules and bring each page to life your way.</p></article>
+          <article class="feature"><div class="icon" aria-hidden="true">🌈</div><h3>A screen-free happy moment</h3><p>Enjoy a playful pause with a book, a few pencils and a big imagination.</p></article>
+          <article class="feature"><div class="icon" aria-hidden="true">💌</div><h3>Order with a real person</h3><p>Message us on Instagram for the latest books, prices and delivery details.</p></article>
         </div>
       </div>
     </section>
 
-    <section id="about">
-      <h2>A Little About SHEKARU</h2>
-      <p>SHEKARU is a creative brand celebrating imagination,
-      artistic expression, and the happiness found in everyday creativity.</p>
-      <p>Our mission is to make creativity welcoming and enjoyable for everyone.</p>
+    <section class="section about" id="about">
+      <div class="wrap about-inner"><div class="eyebrow">A happy little hello</div><h2>Welcome to SHEKARU</h2><p>SHEKARU makes colouring books for little dreamers — filled with the kind of playful creativity that turns an ordinary afternoon into something special. We’re just getting started, and this little corner of the internet can grow right along with us.</p>
+        <div class="insta-card"><div><h3>Come say hello on Instagram</h3><p>See what we’re creating and message us to place an order.</p></div><a class="button" href="https://www.instagram.com/shekaru.books/" target="_blank" rel="noopener noreferrer">@shekaru.books <span aria-hidden="true">↗</span></a></div>
+      </div>
     </section>
   </main>
-
-  <footer>
-    <p>© 2026 SHEKARU · Colouring Life</p>
-    <p>Made with creativity and care.</p>
-  </footer>
+  <footer><div class="wrap footer-inner"><span>© 2026 SHEKARU · Colouring Books for Little Dreamers</span><span>Made with colour and care · <a href="https://www.instagram.com/shekaru.books/" target="_blank" rel="noopener noreferrer">Instagram</a></span></div></footer>
 </body>
 </html>
+
